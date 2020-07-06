@@ -18,3 +18,7 @@ jobs:
         unzip java_osx.zip;
         mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=java_osx/ortools-darwin-7.7.7810.jar;
         mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=java_osx/ortools-java-7.7.7810.jar;
+    - name: Compile
+      run: mvn compile
+    - name: Test
+      run: mvn exec:java -Dexec.mainClass="org.mizux.ortools.Test"

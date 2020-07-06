@@ -11,8 +11,8 @@
 <packaging>jar</packaging>
 
 <name>${project.groupId}:${project.artifactId}</name>
-<description>Google OR-Tools Java project.</description>
-<url>https://github.com/google/or-tools</url>
+<description>Test using Google OR-Tools.</description>
+<url>https://github.com/Mizux/java-ortools</url>
 
 <licenses>
   <license>
@@ -56,12 +56,44 @@
     <type>jar</type>
     <scope>compile</scope>
   </dependency>
+
+  <!-- Should be provided transitively by ortools-java -->
+  <!--
   <dependency>
-    <groupId>junit</groupId>
-    <artifactId>junit</artifactId>
-    <version>4.13</version>
-    <scope>test</scope>
+    <groupId>com.google.ortools</groupId>
+    <artifactId>ortools-linux-x86-64</artifactId>
+    <version>7.7.7810</version>
+    <type>jar</type>
+    <scope>runtime</scope>
   </dependency>
+
+  <dependency>
+    <groupId>com.google.protobuf</groupId>
+    <artifactId>protobuf-java</artifactId>
+    <version>3.12.2</version>
+  </dependency>
+  -->
+
+  <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna -->
+  <!--
+  <dependency>
+    <groupId>net.java.dev.jna</groupId>
+    <artifactId>jna-platform</artifactId>
+    <version>5.5.0</version>
+  </dependency>
+  -->
+
+  <!-- https://mvnrepository.com/artifact/com.sun.jna/jna
+       warning: do not use, should be provided by net.java.dev.jna/jna
+       warning: do not use, since it doesn't contains RESOURCE_PREFIX
+  -->
+  <!--
+  <dependency>
+    <groupId>com.sun.jna</groupId>
+    <artifactId>jna</artifactId>
+    <version>3.0.9</version>
+  </dependency>
+  -->
 </dependencies>
 
 <build>
