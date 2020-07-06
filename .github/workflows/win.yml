@@ -16,4 +16,5 @@ jobs:
       run: |
         (New-Object System.Net.WebClient).DownloadFile("https://github.com/google/or-tools/releases/download/v7.7/java_win.zip","ortools.zip");
         Expand-Archive .\ortools.zip .;
-        ls -R;
+        mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=java_win/ortools-win32-x86-64-7.7.7810.jar;
+        mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=java_win/ortools-java-7.7.7810.jar;
