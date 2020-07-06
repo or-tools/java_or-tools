@@ -16,3 +16,4 @@ jobs:
       run: |
         (New-Object System.Net.WebClient).DownloadFile("https://github.com/google/or-tools/releases/download/v7.7/java_win.zip","ortools.zip");
         Expand-Archive .\ortools.zip .;
+        ls -R;
