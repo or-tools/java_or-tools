@@ -1,0 +1,18 @@
+name: Windows
+
+on: [push, pull_request]
+
+jobs:
+  # Building using the github runner environement directly.
+  cmake:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Check java
+      run: java -version
+    - name: Check maven
+      run: mvn --version
+    - name: Install or-tools
+      run: |
+        (New-Object System.Net.WebClient).DownloadFile("https://github.com/google/or-tools/releases/download/v7.7/java_win.zip","ortools.zip");
+        Expand-Archive .\ortools.zip .;

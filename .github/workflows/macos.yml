@@ -1,0 +1,14 @@
+name: MacOS
+
+on: [push, pull_request]
+
+jobs:
+  # Building using the github runner environement directly.
+  cmake_make:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Check java
+      run: java -version
+    - name: Check maven
+      run: mvn --version
