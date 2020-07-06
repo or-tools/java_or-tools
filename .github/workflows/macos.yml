@@ -12,3 +12,8 @@ jobs:
       run: java -version
     - name: Check maven
       run: mvn --version
+    - name: Install or-tools
+      run: |
+        wget "https://github.com/google/or-tools/releases/download/v7.7/java_osx.zip";
+        unzip java_osx.zip;
+
