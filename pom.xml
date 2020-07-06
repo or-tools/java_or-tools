@@ -48,6 +48,15 @@
   <maven.compiler.target>1.8</maven.compiler.target>
 </properties>
 
+<!--
+<repositories>
+    <repository>
+        <id>local-repo</id>
+        <url>file:${project.basedir}/repo</url>
+    </repository>
+</repositories>
+-->
+
 <dependencies>
   <dependency>
     <groupId>com.google.ortools</groupId>
