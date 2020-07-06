@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   # Building using the github runner environement directly.
-  cmake_make:
+  build:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
