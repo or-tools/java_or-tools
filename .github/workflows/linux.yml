@@ -19,8 +19,8 @@ jobs:
         wget "https://github.com/google/or-tools/releases/download/v7.7/java_linux.tar.gz";
         tar xzvf java_linux.tar.gz;
         unzip -j ortools-java-7.7.7810.jar META-INF/maven/com.google.ortools/ortools-java/pom.xml
-        mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=ortools-linux-x86-64-7.7.7810.jar -DpomFile=pom.xml;
-        mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=ortools-java-7.7.7810.jar;
+        mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=ortools-java-7.7.7810.jar -DpomFile=pom.xml;
+        mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=ortools-linux-x86-64-7.7.7810.jar;
     - name: Compile
       run: mvn compile
     - name: Test
