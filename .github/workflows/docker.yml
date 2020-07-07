@@ -11,6 +11,14 @@ jobs:
       run: docker version
     - name: docker info
       run: docker info
-    - name: docker build
-      run: docker build .
+    - name: docker build env
+      run: docker build --target env .
+    - name: docker build base
+      run: docker build --target base .
+    - name: docker build devel
+      run: docker build --target devel .
+    - name: docker build build
+      run: docker build --target build .
+    - name: docker build test
+      run: docker build --target test .
 
