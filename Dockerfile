@@ -18,10 +18,21 @@ RUN wget "https://github.com/google/or-tools/releases/download/v7.7/java_linux.t
 && tar xzvf java_linux.tar.gz \
 && rm java_linux.tar.gz
 
+
+# -DpomFile=your-pom.xml
+# -DgeneratePom=false
+
 RUN mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file \
--Dfile=ortools-java-7.7.7810.jar
+-Dfile=ortools-java-7.7.7810.jar -DgeneratePom=false
 RUN mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file \
--Dfile=ortools-linux-x86-64-7.7.7810.jar
+-Dfile=ortools-java-7.7.7810-javadoc.jar -Dclassifier=javadoc
+RUN mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file \
+-Dfile=ortools-java-7.7.7810-sources.jar -Dclassifier=sources
+
+RUN mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file \
+-Dfile=ortools-linux-x86-64-7.7.7810.jar -DgeneratePom=false
+RUN mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file \
+-Dfile=ortools-linux-x86-64-7.7.7810-sources.jar -Dclassifier=sources
 
 #ortools-java-7.7.7810-javadoc.jar
 #ortools-java-7.7.7810-sources.jar
