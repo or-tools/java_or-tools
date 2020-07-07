@@ -6,7 +6,7 @@ LABEL maintainer="mizux.dev@gmail.com"
 ENV PATH=/usr/local/bin:$PATH
 RUN apt-get update -qq \
 && DEBIAN_FRONTEND=noninteractive apt-get install -yq \
-wget default-jdk maven \
+wget default-jdk maven unzip \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ENV JAVA_HOME=/usr/lib/jvm/default-java
@@ -18,21 +18,20 @@ RUN wget "https://github.com/google/or-tools/releases/download/v7.7/java_linux.t
 && tar xzvf java_linux.tar.gz \
 && rm java_linux.tar.gz
 
-
-# -DpomFile=your-pom.xml
-# -DgeneratePom=false
+RUN unzip -j ortools-java-7.7.7810.jar META-INF/maven/com.google.ortools/ortools-java/pom.xml
 
 RUN mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file \
--Dfile=ortools-java-7.7.7810.jar -DgeneratePom=false
-RUN mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file \
--Dfile=ortools-java-7.7.7810-javadoc.jar -Dclassifier=javadoc
-RUN mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file \
--Dfile=ortools-java-7.7.7810-sources.jar -Dclassifier=sources
+-Dfile=ortools-java-7.7.7810.jar -DpomFile=pom.xml
+
+#RUN mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file \
+#-Dfile=ortools-java-7.7.7810-javadoc.jar -Dclassifier=javadoc
+#RUN mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file \
+#-Dfile=ortools-java-7.7.7810-sources.jar -Dclassifier=sources
 
 RUN mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file \
--Dfile=ortools-linux-x86-64-7.7.7810.jar -DgeneratePom=false
-RUN mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file \
--Dfile=ortools-linux-x86-64-7.7.7810-sources.jar -Dclassifier=sources
+-Dfile=ortools-linux-x86-64-7.7.7810.jar -DgeneratePom=true
+#RUN mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file \
+#-Dfile=ortools-linux-x86-64-7.7.7810-sources.jar -Dclassifier=sources
 
 #ortools-java-7.7.7810-javadoc.jar
 #ortools-java-7.7.7810-sources.jar
@@ -40,27 +39,26 @@ RUN mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file \
 #ortools-linux-x86-64-7.7.7810-sources.jar
 #ortools-linux-x86-64-7.7.7810.jar
 
-RUN mvn deploy:deploy-file \
--DgroupId=com.google.ortools \
--DartifactId=ortools-java \
--Dversion=7.7.7810 \
--Durl=file:./ -DrepositoryId=local-repo \
--DupdateReleaseInfo=true \
--Dfile=ortools-java-7.7.7810.jar
-
-RUN mvn deploy:deploy-file \
--DgroupId=com.google.ortools \
--DartifactId=ortools-linux-x86-64 \
--Dversion=7.7.7810 \
--Durl=file:./ -DrepositoryId=local-repo \
--DupdateReleaseInfo=true \
--Dfile=ortools-linux-x86-64-7.7.7810.jar
+#RUN mvn deploy:deploy-file \
+#-DgroupId=com.google.ortools \
+#-DartifactId=ortools-java \
+#-Dversion=7.7.7810 \
+#-Durl=file:./ -DrepositoryId=local-repo \
+#-DupdateReleaseInfo=true \
+#-Dfile=ortools-java-7.7.7810.jar
+#
+#RUN mvn deploy:deploy-file \
+#-DgroupId=com.google.ortools \
+#-DartifactId=ortools-linux-x86-64 \
+#-Dversion=7.7.7810 \
+#-Durl=file:./ -DrepositoryId=local-repo \
+#-DupdateReleaseInfo=true \
+#-Dfile=ortools-linux-x86-64-7.7.7810.jar
 
 # Copy project
 FROM base AS devel
 WORKDIR /home/project
 COPY . .
-RUN ls -R
 
 # Build
 FROM devel AS build
