@@ -15,9 +15,11 @@ jobs:
     - name: Download or-tools artifact
       run: |
         new-item -Name repo -ItemType directory;
+        ls;
         cd repo;
         (New-Object System.Net.WebClient).DownloadFile("https://github.com/google/or-tools/releases/download/v7.7/java_win.zip","ortools.zip");
-        Expand-Archive .\ortools.zip .;
+        ls;
+        Expand-Archive ./ortools.zip .;
         unzip -j java_win/ortools-java-7.7.7810.jar META-INF/maven/com.google.ortools/ortools-java/pom.xml;
         mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=java_win/ortools-java-7.7.7810.jar -DpomFile=pom.xml;
         mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=java_win/ortools-win32-x86-64-7.7.7810.jar;
