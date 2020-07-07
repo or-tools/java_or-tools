@@ -12,9 +12,9 @@ jobs:
       run: java -version
     - name: Check maven
       run: mvn --version
-    - name: Install or-tools
+    - name: Download or-tools artifact
       run: |
-        mkdir repo;
+        new-item -Name repo -ItemType directory;
         cd repo;
         (New-Object System.Net.WebClient).DownloadFile("https://github.com/google/or-tools/releases/download/v7.7/java_win.zip","ortools.zip");
         Expand-Archive .\ortools.zip .;
