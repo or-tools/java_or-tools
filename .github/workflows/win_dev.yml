@@ -6,6 +6,9 @@ jobs:
   # Building using the github runner environement directly.
   build:
     runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
     steps:
     - name: Download or-tools artifact
       run: |
