@@ -1,0 +1,30 @@
+name: Windows Dev
+
+on: [push, pull_request]
+
+jobs:
+  # Building using the github runner environement directly.
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: Download or-tools artifact
+      run: |
+        mkdir repo
+        cd repo
+        wget "https://github.com/google/or-tools/releases/download/v7.7/java_win.zip"
+        ls
+    - name: Extract artifact
+      run: |
+        cd repo
+        unzip java_win.zip
+        ls
+    - name: Extract pom.xml
+      run: |
+        cd repo
+        unzip -j java_win/ortools-java-7.7.7810.jar META-INF/maven/com.google.ortools/ortools-java/pom.xml
+        ls
+    - name: Install jar
+      run: |
+        cd repo
+        mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=java_win/ortools-java-7.7.7810.jar -DpomFile=pom.xml
+        mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=java_win/ortools-win32-x86-64-7.7.7810.jar
