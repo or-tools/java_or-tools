@@ -6,15 +6,12 @@ jobs:
   # Building using the github runner environement directly.
   build:
     runs-on: windows-latest
-    defaults:
-      run:
-        shell: bash
     steps:
     - name: Download or-tools artifact
       run: |
         mkdir repo
         cd repo
-        wget "https://github.com/google/or-tools/releases/download/v7.7/java_win.zip"
+        (New-Object System.Net.WebClient).DownloadFile("https://github.com/google/or-tools/releases/download/v7.7/java_win.zip","java_win.zip")
         ls
     - name: Extract artifact
       run: |
