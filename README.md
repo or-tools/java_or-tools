@@ -8,6 +8,6 @@ Test google/or-tools java packages
 
 # HowTo
 First dowload and extract the correct archive:
-* [java_linux.tar.gz](https://github.com/google/or-tools/releases/download/v7.7/java_linux.tar.gz)
-* [java_osx.zip](https://github.com/google/or-tools/releases/download/v7.7/java_osx.zip)
-* [java_win.zip](https://github.com/google/or-tools/releases/download/v7.7/java_win.zip)
+* [java_linux.tar.gz](https://github.com/google/or-tools/releases/download/v8.0/java_linux.tar.gz)
+* [java_osx.zip](https://github.com/google/or-tools/releases/download/v8.0/java_osx.zip)
+* [java_win.zip](https://github.com/google/or-tools/releases/download/v8.0/java_win.zip)
