@@ -14,13 +14,12 @@ jobs:
       run: mvn --version
     - name: Install or-tools
       run: |
-        mkdir repo;
-        cd repo;
-        wget "https://github.com/google/or-tools/releases/download/v8.0/java_linux.tar.gz";
-        tar xzvf java_linux.tar.gz;
-        unzip -j ortools-java-8.0.8283.jar META-INF/maven/com.google.ortools/ortools-java/pom.xml
-        mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=ortools-java-8.0.8283.jar -DpomFile=pom.xml;
-        mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=ortools-linux-x86-64-8.0.8283.jar;
+        mkdir repo
+        cd repo
+        wget "https://github.com/google/or-tools/releases/download/v8.0/java_linux.tar.gz"
+        tar xzvf java_linux.tar.gz
+        mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile=ortools-java-8.0.8283.jar
+        mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile=ortools-linux-x86-64-8.0.8283.jar
     - name: Compile
       run: mvn compile
     - name: Test
