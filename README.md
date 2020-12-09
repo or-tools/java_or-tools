@@ -1,7 +1,13 @@
-![Docker](https://github.com/Mizux/java-ortools/workflows/Docker/badge.svg)
-![Linux](https://github.com/Mizux/java-ortools/workflows/Linux/badge.svg)
-![MacOS](https://github.com/Mizux/java-ortools/workflows/MacOS/badge.svg)
-![Windows](https://github.com/Mizux/java-ortools/workflows/Windows/badge.svg)
+[![Build Status][docker_status]][workflow_link]
+[![Build Status][linux_status]][workflow_link]
+[![Build Status][macos_status]][workflow_link]
+[![Build Status][win_status]][workflow_link]
+
+[docker_status]: https://github.com/or-tools/java_or-tools/workflows/Docker/badge.svg?branch=master
+[linux_status]: https://github.com/or-tools/java_or-tools/workflows/Linux/badge.svg?branch=master
+[macos_status]: https://github.com/or-tools/java_or-tools/workflows/MacOS/badge.svg?branch=master
+[win_status]: https://github.com/or-tools/java_or-tools/workflows/Windows/badge.svg?branch=master
+[workflow_link]: https://github.com/or-tools/java_or-tools/actions
 
 # Introduction
 Sample project explaining how to use Google OR-Tools java artifact.
