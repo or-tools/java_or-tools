@@ -8,23 +8,23 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: Download or-tools artifact
-      run: >
-        mkdir repo;
-        cd repo;
-        (New-Object System.Net.WebClient).DownloadFile("https://github.com/google/or-tools/releases/download/v7.7/java_win.zip","java_win.zip");
+      run: |
+        mkdir repo
+        cd repo
+        (New-Object System.Net.WebClient).DownloadFile("https://github.com/google/or-tools/releases/download/v8.0/java_win.zip","java_win.zip")
         ls
     - name: Extract artifact
-      run: >
-        cd repo;
-        unzip java_win.zip;
-        ls;
+      run: |
+        cd repo
+        unzip java_win.zip
+        ls
     - name: Extract pom.xml
       run: |
         cd repo
-        unzip -j java_win/ortools-java-7.7.7810.jar META-INF/maven/com.google.ortools/ortools-java/pom.xml
+        unzip -j ortools-java-8.0.8283.jar META-INF/maven/com.google.ortools/ortools-java/pom.xml
         ls
     - name: Install jar
       run: |
         cd repo
-        mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=java_win/ortools-java-7.7.7810.jar -DpomFile=pom.xml
-        mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=java_win/ortools-win32-x86-64-7.7.7810.jar
+        mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=ortools-java-8.0.8283.jar -DpomFile=pom.xml
+        mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=ortools-win32-x86-64-8.0.8283.jar
