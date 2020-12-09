@@ -16,7 +16,7 @@ jobs:
     - name: Extract artifact
       run: |
         cd repo
-        unzip java_win.zip
+        Expand-Archive .\java_win.zip .
         ls
     - name: Extract pom.xml
       run: |
