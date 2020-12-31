@@ -14,18 +14,18 @@ Sample project explaining how to use Google OR-Tools java artifact.
 
 ## HowTo
 First dowload and extract the correct archive:
-* [java_linux.tar.gz](https://github.com/google/or-tools/releases/download/v8.0/java_linux.tar.gz)
-* [java_osx.zip](https://github.com/google/or-tools/releases/download/v8.0/java_osx.zip)
-* [java_win.zip](https://github.com/google/or-tools/releases/download/v8.0/java_win.zip)
+* [java_linux.tar.gz](https://github.com/google/or-tools/releases/download/v8.1/java_linux.tar.gz)
+* [java_osx.zip](https://github.com/google/or-tools/releases/download/v8.1/java_osx.zip)
+* [java_win.zip](https://github.com/google/or-tools/releases/download/v8.1/java_win.zip)
 
 Then install both packages `ortools-java`, e.g.:<br>
 ```sh
-mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile=ortools-java-8.0.8283.jar
+mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile=ortools-java-8.1.8487.jar
 ```
 and `ortools-<platform>`, e.g.:<br>
 e.g. for GNU/Linux
 ```sh
-mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile=ortools-linux-x86-64-8.0.8283.jar
+mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile=ortools-linux-x86-64-8.1.8487.jar
 ```
 
 ## Testing
