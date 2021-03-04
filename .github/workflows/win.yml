@@ -19,15 +19,15 @@ jobs:
       run: mvn --version
     - name: Download or-tools artifact
       run: |
-        (New-Object System.Net.WebClient).DownloadFile("https://github.com/google/or-tools/releases/download/v8.1/java_win.zip","java_win.zip")
+        (New-Object System.Net.WebClient).DownloadFile("https://github.com/google/or-tools/releases/download/v8.2/java_win.zip","java_win.zip")
     - name: Extract or-tools package
       run: |
         Expand-Archive .\java_win.zip repo
     - name: Install jar
       run: |
         cd repo
-        mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile="ortools-java-8.1.8487.jar"
-        mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile="ortools-win32-x86-64-8.1.8487.jar"
+        mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile="ortools-java-8.2.8710.jar"
+        mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile="ortools-win32-x86-64-8.2.8710.jar"
     - name: Compile
       run: mvn compile
     - name: Test

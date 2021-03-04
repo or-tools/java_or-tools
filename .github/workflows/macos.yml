@@ -21,10 +21,10 @@ jobs:
       run: |
         mkdir repo
         cd repo
-        wget "https://github.com/google/or-tools/releases/download/v8.1/java_osx.zip"
+        wget "https://github.com/google/or-tools/releases/download/v8.2/java_osx.zip"
         unzip java_osx.zip
-        mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile=ortools-java-8.1.8487.jar
-        mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile=ortools-darwin-8.1.8487.jar
+        mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile=ortools-java-8.2.8710.jar
+        mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile=ortools-darwin-8.2.8710.jar
     - name: Compile
       run: mvn compile
     - name: Test
