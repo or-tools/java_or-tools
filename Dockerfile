@@ -20,22 +20,22 @@ RUN wget "https://github.com/google/or-tools/releases/download/v8.2/java_linux.t
 
 # We must provide the pom.xml so we need to extract it...
 #RUN unzip -j ortools-java-8.2.8710.jar META-INF/maven/com.google.ortools/ortools-java/pom.xml
-#RUN mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file \
-#-Dfile=ortools-java-8.2.8710.jar -DpomFile=pom.xml
+#RUN mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file \
+#-Dfile="ortools-java-8.2.8710.jar" -DpomFile=pom.xml
 
 RUN mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file \
--Dfile=ortools-java-8.2.8710.jar
+-Dfile="ortools-java-8.2.8710.jar"
 
 #RUN mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file \
-#-Dfile=ortools-java-8.2.8710-javadoc.jar -Dclassifier=javadoc
+#-Dfile="ortools-java-8.2.8710-javadoc.jar" -Dclassifier=javadoc
 #RUN mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file \
-#-Dfile=ortools-java-8.2.8710-sources.jar -Dclassifier=sources
+#-Dfile="ortools-java-8.2.8710-sources.jar" -Dclassifier=sources
 
 RUN mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file \
--Dfile=ortools-linux-x86-64-8.2.8710.jar
+-Dfile="ortools-linux-x86-64-8.2.8710.jar"
 
 #RUN mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file \
-#-Dfile=ortools-linux-x86-64-8.2.8710-sources.jar -Dclassifier=sources
+#-Dfile="ortools-linux-x86-64-8.2.8710-sources.jar" -Dclassifier=sources
 
 # Copy project
 FROM base AS devel

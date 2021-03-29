@@ -20,12 +20,12 @@ First dowload and extract the correct archive:
 
 Then install both packages `ortools-java`, e.g.:<br>
 ```sh
-mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile=ortools-java-8.2.8710.jar
+mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile="ortools-java-8.2.8710.jar"
 ```
 and `ortools-<platform>`, e.g.:<br>
 e.g. for GNU/Linux
 ```sh
-mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile=ortools-linux-x86-64-8.2.8710.jar
+mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile="ortools-linux-x86-64-8.2.8710.jar"
 ```
 
 ## Testing
