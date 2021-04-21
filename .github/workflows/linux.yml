@@ -17,14 +17,6 @@ jobs:
       run: java -version
     - name: Check maven
       run: mvn --version
-    - name: Install or-tools
-      run: |
-        mkdir repo
-        cd repo
-        wget "https://github.com/google/or-tools/releases/download/v8.2/java_linux.tar.gz"
-        tar xzvf java_linux.tar.gz
-        mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile="ortools-java-8.2.8710.jar"
-        mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile="ortools-linux-x86-64-8.2.8710.jar"
     - name: Compile
       run: mvn compile
     - name: Test
