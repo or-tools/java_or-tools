@@ -1,6 +1,6 @@
 # Create a virtual environment with all tools installed
 # ref: https://hub.docker.com/_/ubuntu
-FROM ubuntu:rolling AS env
+FROM ubuntu:16.04 AS env
 LABEL maintainer="mizux.dev@gmail.com"
 # Install system build dependencies
 ENV PATH=/usr/local/bin:$PATH

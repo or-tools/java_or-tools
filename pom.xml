@@ -52,7 +52,7 @@
   <dependency>
     <groupId>com.google.ortools</groupId>
     <artifactId>ortools-java</artifactId>
-    <version>[8.2,)</version>
+    <version>[8.2.9025,)</version>
     <type>jar</type>
     <scope>compile</scope>
   </dependency>
