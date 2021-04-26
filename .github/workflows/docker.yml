@@ -18,8 +18,6 @@ jobs:
       run: docker info
     - name: docker build env
       run: docker build --target env .
-    - name: docker build base
-      run: docker build --target base .
     - name: docker build devel
       run: docker build --target devel .
     - name: docker build build
