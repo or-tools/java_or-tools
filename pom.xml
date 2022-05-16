@@ -33,7 +33,7 @@
 <scm>
   <connection>scm:git:git://github.com/Mizux/java-ortools.git</connection>
   <developerConnection>scm:git:ssh://github.com:Mizux/java-ortools.git</developerConnection>
-  <url>http://github.com/Mizux/java-ortools/tree/master</url>
+  <url>http://github.com/Mizux/java-ortools/tree/main</url>
   <tag>HEAD</tag>
 </scm>
 
