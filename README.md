@@ -3,10 +3,10 @@
 [![Build Status][macos_status]][workflow_link]
 [![Build Status][win_status]][workflow_link]
 
-[docker_status]: https://github.com/or-tools/java_or-tools/workflows/Docker/badge.svg?branch=master
-[linux_status]: https://github.com/or-tools/java_or-tools/workflows/Linux/badge.svg?branch=master
-[macos_status]: https://github.com/or-tools/java_or-tools/workflows/MacOS/badge.svg?branch=master
-[win_status]: https://github.com/or-tools/java_or-tools/workflows/Windows/badge.svg?branch=master
+[docker_status]: https://github.com/or-tools/java_or-tools/workflows/Docker/badge.svg?branch=main
+[linux_status]: https://github.com/or-tools/java_or-tools/workflows/Linux/badge.svg?branch=main
+[macos_status]: https://github.com/or-tools/java_or-tools/workflows/MacOS/badge.svg?branch=main
+[win_status]: https://github.com/or-tools/java_or-tools/workflows/Windows/badge.svg?branch=main
 [workflow_link]: https://github.com/or-tools/java_or-tools/actions
 
 # Introduction
