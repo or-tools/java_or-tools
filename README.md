@@ -10,7 +10,7 @@
 [workflow_link]: https://github.com/or-tools/java_or-tools/actions
 
 # Introduction
-Sample project explaining how to use Google OR-Tools java artifact.
+Sample project explaining how to use Google OR-Tools with local java artifact.
 
 ## HowTo
 First dowload and extract the correct archive:
