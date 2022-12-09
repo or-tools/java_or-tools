@@ -1,7 +1,6 @@
 # Create a virtual environment with all tools installed
 # ref: https://hub.docker.com/_/ubuntu
-FROM ubuntu:16.04 AS env
-LABEL maintainer="mizux.dev@gmail.com"
+FROM ubuntu:22.04 AS env
 # Install system build dependencies
 ENV PATH=/usr/local/bin:$PATH
 RUN apt-get update -qq \
@@ -22,4 +21,4 @@ RUN mvn compile
 
 # Run test
 FROM build AS test
-RUN mvn exec:java -Dexec.mainClass="org.mizux.ortools.Test"
+RUN mvn exec:java
