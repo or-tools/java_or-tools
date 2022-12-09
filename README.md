@@ -1,13 +1,16 @@
-[![Build Status][docker_status]][workflow_link]
-[![Build Status][linux_status]][workflow_link]
-[![Build Status][macos_status]][workflow_link]
-[![Build Status][win_status]][workflow_link]
+[![Build Status][docker_status]][docker_link]
+[![Build Status][linux_status]][linux_link]
+[![Build Status][macos_status]][macos_link]
+[![Build Status][windows_status]][windows_link]
 
-[docker_status]: https://github.com/or-tools/java_or-tools/workflows/Docker/badge.svg?branch=main
-[linux_status]: https://github.com/or-tools/java_or-tools/workflows/Linux/badge.svg?branch=main
-[macos_status]: https://github.com/or-tools/java_or-tools/workflows/MacOS/badge.svg?branch=main
-[win_status]: https://github.com/or-tools/java_or-tools/workflows/Windows/badge.svg?branch=main
-[workflow_link]: https://github.com/or-tools/java_or-tools/actions
+[docker_status]: https://github.com/or-tools/java_or-tools/workflows/docker.yml/badge.svg
+[docker_link]: https://github.com/or-tools/java_or-tools/actions/workflows/docker.yml
+[linux_status]: https://github.com/or-tools/java_or-tools/workflows/linux.yml/badge.svg
+[linux_link]: https://github.com/or-tools/java_or-tools/actions/workflows/linux.yml
+[macos_status]: https://github.com/or-tools/java_or-tools/workflows/macos.yml/badge.svg
+[macos_link]: https://github.com/or-tools/java_or-tools/actions/workflows/macos.yml
+[windows_status]: https://github.com/or-tools/java_or-tools/workflows/windows.yml/badge.svg
+[windows_link]: https://github.com/or-tools/java_or-tools/actions/workflows/windows.yml
 
 # Introduction
 Sample project explaining how to use Google OR-Tools with local java artifact.

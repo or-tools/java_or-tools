@@ -1,11 +1,6 @@
 name: Windows
 
-on:
-  push:
-  pull_request:
-  schedule:
-    # min hours day(month) month day(week)
-    - cron: '0 0 7,22 * *'
+on: [push, pull_request]
 
 jobs:
   # Building using the github runner environement directly.
@@ -20,4 +15,6 @@ jobs:
     - name: Compile
       run: mvn compile
     - name: Test
-      run: mvn exec:java "-Dexec.mainClass=org.mizux.ortools.Test"
+      run: mvn exec:java
+    - name: Package
+      run: mvn package
