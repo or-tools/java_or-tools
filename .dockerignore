@@ -9,4 +9,5 @@ Dockerfile
 README.md
 LICENSE
 
+target/
 *.swp
