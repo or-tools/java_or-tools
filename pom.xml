@@ -7,7 +7,7 @@
 
 <groupId>org.or-tools.example</groupId>
 <artifactId>BasicExample</artifactId>
-<version>9.4.1874</version>
+<version>9.5</version>
 <packaging>jar</packaging>
 
 <name>${project.groupId}:${project.artifactId}</name>
@@ -70,7 +70,7 @@
   <dependency>
     <groupId>com.google.ortools</groupId>
     <artifactId>ortools-java</artifactId>
-    <version>9.4.1874</version>
+    <version>9.5.2237</version>
     <type>jar</type>
     <scope>compile</scope>
   </dependency>
