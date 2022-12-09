@@ -5,14 +5,14 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 <modelVersion>4.0.0</modelVersion>
 
-<groupId>org.mizux.ortools</groupId>
-<artifactId>test</artifactId>
-<version>1.0</version>
+<groupId>org.or-tools.example</groupId>
+<artifactId>BasicExample</artifactId>
+<version>9.4.1874</version>
 <packaging>jar</packaging>
 
 <name>${project.groupId}:${project.artifactId}</name>
-<description>Test using Google OR-Tools.</description>
-<url>https://github.com/Mizux/java-ortools</url>
+<description>Sample using Google OR-Tools.</description>
+<url>https://github.com/or-tools/maven_or-tools</url>
 
 <licenses>
   <license>
@@ -23,27 +23,45 @@
 
 <developers>
   <developer>
-    <name>Mizux</name>
-    <email>mizux.dev@gmail.com</email>
-    <organization>Mizux</organization>
-    <organizationUrl>http://www.mizux.org</organizationUrl>
+    <name>Corentin "Mizux" Le Molgat</name>
+    <email>corentinl@google.com</email>
+    <organization>Google LLC</organization>
+    <organizationUrl>http://www.google.com</organizationUrl>
+  </developer>
+  <developer>
+    <name>Laurent Perron</name>
+    <email>lperron@google.com</email>
+    <organization>Google LLC</organization>
+    <organizationUrl>http://www.google.com</organizationUrl>
   </developer>
 </developers>
 
 <scm>
-  <connection>scm:git:git://github.com/Mizux/java-ortools.git</connection>
-  <developerConnection>scm:git:ssh://github.com:Mizux/java-ortools.git</developerConnection>
-  <url>http://github.com/Mizux/java-ortools/tree/main</url>
+  <connection>scm:git:git://github.com/or-tools/java_or-tools.git</connection>
+  <developerConnection>scm:git:ssh://github.com:or-tools/java_or-tools.git</developerConnection>
+  <url>http://github.com/or-tools/java_or-tools/tree/main</url>
   <tag>HEAD</tag>
 </scm>
 
 <issueManagement>
   <system>GitHub Issues</system>
-  <url>http://github.com/Mizux/java-ortools/issues</url>
+  <url>http://github.com/or-tools/maven_or-tools/issues</url>
 </issueManagement>
+
+<distributionManagement>
+  <snapshotRepository>
+    <id>ossrh</id>
+    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+  </snapshotRepository>
+  <repository>
+    <id>ossrh</id>
+    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+  </repository>
+</distributionManagement>
 
 <properties>
   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  <exec.mainClass>org.or_tools.example.BasicExample</exec.mainClass>
   <maven.compiler.source>1.8</maven.compiler.source>
   <maven.compiler.target>1.8</maven.compiler.target>
 </properties>
@@ -52,7 +70,7 @@
   <dependency>
     <groupId>com.google.ortools</groupId>
     <artifactId>ortools-java</artifactId>
-    <version>[9.0.9048,)</version>
+    <version>[9.4.1874,)</version>
     <type>jar</type>
     <scope>compile</scope>
   </dependency>
@@ -77,11 +95,31 @@
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-javadoc-plugin</artifactId>
       <version>3.2.0</version>
+      <configuration>
+        <detectJavaApiLink>false</detectJavaApiLink>
+        <source>${maven.compiler.source}</source>
+        <target>${maven.compiler.target}</target>
+        <additionalJOption>-Xdoclint:none</additionalJOption>
+      </configuration>
       <executions>
         <execution>
           <id>attach-javadocs</id>
           <goals>
             <goal>jar</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-gpg-plugin</artifactId>
+      <version>1.6</version>
+      <executions>
+        <execution>
+          <id>sign-artifacts</id>
+          <phase>verify</phase>
+          <goals>
+            <goal>sign</goal>
           </goals>
         </execution>
       </executions>

@@ -13,29 +13,29 @@
 [windows_link]: https://github.com/or-tools/java_or-tools/actions/workflows/windows.yml
 
 # Introduction
-Sample project explaining how to use Google OR-Tools with local java artifact.
+Sample project explaining how to use Google OR-Tools in a maven project.
 
-## HowTo
-First dowload and extract the correct archive:
-* [java_linux.tar.gz](https://github.com/google/or-tools/releases/download/v8.2/java_linux.tar.gz)
-* [java_osx.zip](https://github.com/google/or-tools/releases/download/v8.2/java_osx.zip)
-* [java_win.zip](https://github.com/google/or-tools/releases/download/v8.2/java_win.zip)
+# Build
 
-Then install both packages `ortools-java`, e.g.:<br>
 ```sh
-mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile="ortools-java-8.2.8710.jar"
+mvn compile -B
 ```
-and `ortools-<platform>`, e.g.:<br>
-e.g. for GNU/Linux
+
+# Run
+
 ```sh
-mvn org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile="ortools-linux-x86-64-8.2.8710.jar"
+mvn exec:java
+```
+
+# Package
+
+```sh
+mvn package -B
 ```
 
 ## Testing
 You can test using the provided Dockerfile
 ```sh
-docker build --tag=java_ortools .
+docker build --tag=java_or-tools .
 ```
 
-note: Don't hesitate to look at [github action workflows](.github/workflows)
-too.
