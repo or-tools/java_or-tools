@@ -7,7 +7,7 @@
 
 <groupId>org.or-tools.example</groupId>
 <artifactId>BasicExample</artifactId>
-<version>9.5</version>
+<version>1.0.0</version>
 <packaging>jar</packaging>
 
 <name>${project.groupId}:${project.artifactId}</name>
