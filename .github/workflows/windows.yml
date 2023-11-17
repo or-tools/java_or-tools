@@ -2,12 +2,12 @@ name: Windows
 
 on: [push, pull_request, workflow_dispatch]
 
-jobs:
-  # Building using the github runner environement directly.
-  build:
+# Building using the github runner environement directly.
+jobs: 
+  native:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Check java
       run: java -version
     - name: Check maven
