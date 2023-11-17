@@ -1,13 +1,13 @@
-name: MacOS
+name: amd64 Linux
 
 on: [push, pull_request, workflow_dispatch]
 
+# Building using the github runner environement directly.
 jobs:
-  # Building using the github runner environement directly.
-  build:
-    runs-on: macos-latest
+  native:
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Check java
       run: java -version
     - name: Check maven
