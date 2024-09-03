@@ -1,11 +1,10 @@
 # Create a virtual environment with all tools installed
 # ref: https://hub.docker.com/_/ubuntu
-FROM ubuntu:22.04 AS env
+FROM ubuntu:latest AS env
 # Install system build dependencies
 ENV PATH=/usr/local/bin:$PATH
-RUN apt-get update -qq \
-&& DEBIAN_FRONTEND=noninteractive apt-get install -yq \
-default-jdk maven \
+RUN apt update -qq \
+&& DEBIAN_FRONTEND=noninteractive apt install -yq default-jdk maven \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ENV JAVA_HOME=/usr/lib/jvm/default-java
@@ -17,8 +16,12 @@ COPY . .
 
 # Build
 FROM devel AS build
-RUN mvn compile
+RUN mvn compile -B
 
-# Run test
-FROM build AS test
+# Run
+FROM build AS run
 RUN mvn exec:java
+
+# Pack
+FROM build AS pack
+RUN mvn package -B
