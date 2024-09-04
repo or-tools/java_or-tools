@@ -36,7 +36,7 @@ public final class BasicExample {
     // Create the linear solver with the GLOP backend.
     MPSolver solver = MPSolver.createSolver("GLOP");
     if (solver == null) {
-      System.out.println("Could not create solver SCIP");
+      System.out.println("Could not create solver GLOP");
       return;
     }
     // [END solver]
