@@ -6,6 +6,7 @@ on: [push, pull_request, workflow_dispatch]
 # Building using the github runner environement directly.
 jobs:
   native:
+    name: Linux • Java
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4

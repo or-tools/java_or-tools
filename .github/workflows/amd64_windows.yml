@@ -6,6 +6,7 @@ on: [push, pull_request, workflow_dispatch]
 # Building using the github runner environement directly.
 jobs:
   native:
+    name: Windows • Java
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v4
