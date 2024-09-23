@@ -1,3 +1,4 @@
+# ref: https://github.com/actions/runner-images
 name: amd64 MacOS
 
 on: [push, pull_request, workflow_dispatch]
@@ -5,7 +6,8 @@ on: [push, pull_request, workflow_dispatch]
 # Building using the github runner environement directly.
 jobs:
   native:
-    runs-on: macos-latest
+    name: MacOS • Java
+    runs-on: macos-13 # latest intel based macos runner
     steps:
     - uses: actions/checkout@v4
     - name: Check java
