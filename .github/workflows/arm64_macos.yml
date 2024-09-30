@@ -1,5 +1,5 @@
 # ref: https://github.com/actions/runner-images
-name: amd64 MacOS
+name: arm64 MacOS
 
 on: [push, pull_request, workflow_dispatch]
 
