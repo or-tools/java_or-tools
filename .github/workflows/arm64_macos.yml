@@ -3,10 +3,14 @@ name: arm64 MacOS
 
 on: [push, pull_request, workflow_dispatch]
 
+concurrency:
+  group: ${{github.workflow}}-${{github.ref}}
+  cancel-in-progress: true
+
 # Building using the github runner environement directly.
 jobs:
   native:
-    name: MacOS • Java
+    name: MacOS•Java
     runs-on: macos-latest # arm64 based macos runner
     steps:
     - uses: actions/checkout@v4

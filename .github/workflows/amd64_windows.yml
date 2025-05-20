@@ -3,10 +3,14 @@ name: amd64 Windows
 
 on: [push, pull_request, workflow_dispatch]
 
+concurrency:
+  group: ${{github.workflow}}-${{github.ref}}
+  cancel-in-progress: true
+
 # Building using the github runner environement directly.
 jobs:
   native:
-    name: Windows • Java
+    name: Windows•Java
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v4
