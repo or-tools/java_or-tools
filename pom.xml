@@ -70,7 +70,7 @@
   <dependency>
     <groupId>com.google.ortools</groupId>
     <artifactId>ortools-java</artifactId>
-    <version>9.12.4544</version>
+    <version>9.13.4784</version>
     <type>jar</type>
     <scope>compile</scope>
   </dependency>
