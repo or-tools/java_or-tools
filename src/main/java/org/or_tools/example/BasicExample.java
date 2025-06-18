@@ -1,4 +1,4 @@
-// Copyright 2010-2024 Google LLC
+// Copyright 2010-2025 Google LLC
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -11,90 +11,78 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Minimal example to call the GLOP solver.
+// Minimal example to call the CP-SAT solver.
 // [START program]
 package org.or_tools.example;
 // [START import]
+import static java.util.Arrays.stream;
+
 import com.google.ortools.Loader;
 import com.google.ortools.init.OrToolsVersion;
-import com.google.ortools.linearsolver.MPConstraint;
-import com.google.ortools.linearsolver.MPObjective;
-import com.google.ortools.linearsolver.MPSolver;
-import com.google.ortools.linearsolver.MPVariable;
+import com.google.ortools.sat.CpModel;
+import com.google.ortools.sat.CpSolver;
+import com.google.ortools.sat.CpSolverStatus;
+import com.google.ortools.sat.IntVar;
+import com.google.ortools.sat.LinearExpr;
 // [END import]
 
-/** Minimal Linear Programming example to showcase calling the solver. */
+/** Minimal CP-SAT example to showcase calling the solver. */
 public final class BasicExample {
   public static void main(String[] args) {
     // [START loader]
     Loader.loadNativeLibraries();
     // [END loader]
-
     System.out.println("Google OR-Tools version: " + OrToolsVersion.getVersionString());
 
-    // [START solver]
-    // Create the linear solver with the GLOP backend.
-    MPSolver solver = MPSolver.createSolver("GLOP");
-    if (solver == null) {
-      System.out.println("Could not create solver GLOP");
-      return;
-    }
-    // [END solver]
+    // Create the model.
+    // [START model]
+    CpModel model = new CpModel();
+    // [END model]
 
+    // Create the variables.
     // [START variables]
-    // Create the variables x and y.
-    MPVariable x = solver.makeNumVar(0.0, 1.0, "x");
-    MPVariable y = solver.makeNumVar(0.0, 2.0, "y");
+    int varUpperBound = stream(new int[] {50, 45, 37}).max().getAsInt();
 
-    System.out.println("Number of variables = " + solver.numVariables());
+    IntVar x = model.newIntVar(0, varUpperBound, "x");
+    IntVar y = model.newIntVar(0, varUpperBound, "y");
+    IntVar z = model.newIntVar(0, varUpperBound, "z");
     // [END variables]
 
+    // Create the constraints.
     // [START constraints]
-    double infinity = java.lang.Double.POSITIVE_INFINITY;
-    // Create a linear constraint, x + y <= 2.
-    MPConstraint ct = solver.makeConstraint(-infinity, 2.0, "ct");
-    ct.setCoefficient(x, 1);
-    ct.setCoefficient(y, 1);
-
-    System.out.println("Number of constraints = " + solver.numConstraints());
+    model.addLessOrEqual(LinearExpr.weightedSum(new IntVar[] {x, y, z}, new long[] {2, 7, 3}), 50);
+    model.addLessOrEqual(LinearExpr.weightedSum(new IntVar[] {x, y, z}, new long[] {3, -5, 7}), 45);
+    model.addLessOrEqual(LinearExpr.weightedSum(new IntVar[] {x, y, z}, new long[] {5, 2, -6}), 37);
     // [END constraints]
 
     // [START objective]
-    // Create the objective function, 3 * x + y.
-    MPObjective objective = solver.objective();
-    objective.setCoefficient(x, 3);
-    objective.setCoefficient(y, 1);
-    objective.setMaximization();
+    model.maximize(LinearExpr.weightedSum(new IntVar[] {x, y, z}, new long[] {2, 2, 3}));
     // [END objective]
 
+    // Create a solver and solve the model.
     // [START solve]
-    System.out.println("Solving with " + solver.solverVersion());
-    final MPSolver.ResultStatus resultStatus = solver.solve();
+    CpSolver solver = new CpSolver();
+    CpSolverStatus status = solver.solve(model);
     // [END solve]
 
     // [START print_solution]
-    System.out.println("Status: " + resultStatus);
-    if (resultStatus != MPSolver.ResultStatus.OPTIMAL) {
-      System.out.println("The problem does not have an optimal solution!");
-      if (resultStatus == MPSolver.ResultStatus.FEASIBLE) {
-        System.out.println("A potentially suboptimal solution was found");
-      } else {
-        System.out.println("The solver could not solve the problem.");
-        return;
-      }
+    if (status == CpSolverStatus.OPTIMAL || status == CpSolverStatus.FEASIBLE) {
+      System.out.printf("Maximum of objective function: %f%n", solver.objectiveValue());
+      System.out.println("x = " + solver.value(x));
+      System.out.println("y = " + solver.value(y));
+      System.out.println("z = " + solver.value(z));
+    } else {
+      System.out.println("No solution found.");
     }
-
-    System.out.println("Solution:");
-    System.out.println("Objective value = " + objective.value());
-    System.out.println("x = " + x.solutionValue());
-    System.out.println("y = " + y.solutionValue());
     // [END print_solution]
 
-    // [START advanced]
-    System.out.println("Advanced usage:");
-    System.out.println("Problem solved in " + solver.wallTime() + " milliseconds");
-    System.out.println("Problem solved in " + solver.iterations() + " iterations");
-    // [END advanced]
+    // Statistics.
+    // [START statistics]
+    System.out.println("Statistics");
+    System.out.printf("  conflicts: %d%n", solver.numConflicts());
+    System.out.printf("  branches : %d%n", solver.numBranches());
+    System.out.printf("  wall time: %f s%n", solver.wallTime());
+    // [END statistics]
   }
 
   private BasicExample() {}
