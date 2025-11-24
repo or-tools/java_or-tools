@@ -13,7 +13,7 @@ jobs:
     name: Linux•Java
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
     - name: Check java
       run: java -version
     - name: Check maven
