@@ -24,9 +24,11 @@ jobs:
           {distrib: 'temurin', version: '17'}, # 2027/10
           {distrib: 'temurin', version: '21'}, # 2029/12
           # see https://endoflife.date/microsoft-build-of-openjdk
-          {distrib: 'microsoft', version: '11'}, # 2027/09
-          {distrib: 'microsoft', version: '17'}, # 2027/09
-          {distrib: 'microsoft', version: '21'}, # 2028/09
+          # microsoft jdk do not provide the same msvcp140.dll than the one
+          # shipped by VS 2022 so we can't use them to test v9.13
+          #{distrib: 'microsoft', version: '11'}, # 2027/09
+          #{distrib: 'microsoft', version: '17'}, # 2027/09
+          #{distrib: 'microsoft', version: '21'}, # 2028/09
         ]
       fail-fast: false
     name: Windows•${{matrix.java.distrib}}-${{matrix.java.version}}
