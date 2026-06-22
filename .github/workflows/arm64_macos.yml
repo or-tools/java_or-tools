@@ -13,7 +13,7 @@ jobs:
     name: MacOS•Java
     runs-on: macos-latest # arm64 based macos runner
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
     - name: Check java
       run: java -version
     - name: Check maven
